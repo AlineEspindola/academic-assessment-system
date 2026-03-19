@@ -1,7 +1,12 @@
-public class ApprovedStudent implements Student {
+package domain.student;
+
+import domain.assessment.Assessment;
+import domain.primitive.ID;
+
+public class StudyingStudent implements Student {
     private final Student student;
 
-    public ApprovedStudent(Student student) {
+    public StudyingStudent(Student student) {
         this.student = student;
     }
 
@@ -12,6 +17,6 @@ public class ApprovedStudent implements Student {
 
     @Override
     public void submitAssessment(Assessment assessment) {
-        throw new UnsupportedOperationException("Approved students cannot submit assessments.");
+
     }
 }

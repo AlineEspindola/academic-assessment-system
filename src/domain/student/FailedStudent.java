@@ -1,7 +1,12 @@
-public class StudyingStudent implements Student {
+package domain.student;
+
+import domain.assessment.Assessment;
+import domain.primitive.ID;
+
+public class FailedStudent implements Student {
     private final Student student;
 
-    public StudyingStudent(Student student) {
+    public FailedStudent(Student student) {
         this.student = student;
     }
 

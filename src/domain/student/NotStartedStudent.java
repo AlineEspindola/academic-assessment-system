@@ -1,3 +1,8 @@
+package domain.student;
+
+import domain.assessment.Assessment;
+import domain.primitive.ID;
+
 public class NotStartedStudent implements Student {
     private final ID id;
 
