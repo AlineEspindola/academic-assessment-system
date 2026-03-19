@@ -1,1 +1,1 @@
-# Academic Assessment Systenm
+# Academic Assessment System
