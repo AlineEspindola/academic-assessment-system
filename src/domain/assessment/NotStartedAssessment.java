@@ -2,6 +2,7 @@ package domain.assessment;
 
 import domain.primitive.DefaultScore;
 import domain.primitive.ID;
+import domain.primitive.IntScore;
 import domain.primitive.Score;
 
 public class NotStartedAssessment implements Assessment {
@@ -10,7 +11,7 @@ public class NotStartedAssessment implements Assessment {
 
     public NotStartedAssessment(ID id) {
         this.id = id;
-        this.score = new DefaultScore("0");
+        this.score = new IntScore(new DefaultScore("0"));
     }
 
     public NotStartedAssessment(ID id, Score score) {

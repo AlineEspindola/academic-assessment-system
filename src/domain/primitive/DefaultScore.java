@@ -1,7 +1,7 @@
 package domain.primitive;
 
 // Criar novos tipos realmente validados
-public class DefaultScore implements Score {
+public class DefaultScore implements Score<String> {
     private final String value;
 
     public DefaultScore(String value) {

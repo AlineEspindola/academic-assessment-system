@@ -1,5 +1,5 @@
 package domain.primitive;
 
-public interface Score {
-    String value();
+public interface Score<T> {
+    T value();
 }
