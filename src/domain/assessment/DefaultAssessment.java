@@ -5,11 +5,16 @@ import domain.primitive.ID;
 import domain.primitive.IntScore;
 import domain.primitive.Score;
 
-public class NotStartedAssessment implements Assessment {
+public class DefaultAssessment implements Assessment {
     private final ID id;
     private final Score score;
 
-    public NotStartedAssessment(ID id) {
+    public DefaultAssessment(ID id, Score score) {
+        this.id = id;
+        this.score = score;
+    }
+
+    public DefaultAssessment(ID id) {
         this.id = id;
         this.score = new IntScore(new DefaultScore("0"));
     }
@@ -21,12 +26,14 @@ public class NotStartedAssessment implements Assessment {
 
     @Override
     public Assessment generate_score(Score score) {
-        throw new IllegalStateException("Cannot generate score: assessment not started");
+        throw new UnsupportedOperationException(
+                "DefaultAssessment cannot be modified. Score generation is not allowed for this assessment type."
+        );
     }
 
     @Override
     public Assessment start() {
-        return new InProgressAssessment(this);
+        return this;
     }
 
     @Override

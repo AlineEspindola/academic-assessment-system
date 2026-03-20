@@ -1,9 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import domain.assessment.Assessment;
+import domain.assessment.InProgressAssessment;
+import domain.assessment.NotStartedAssessment;
+import domain.primitive.*;
+import domain.student.NotStartedStudent;
+import domain.student.Student;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
+        // Testes
+        Score<String> defaultScore = new DefaultScore("11");
+        Integer parsed = Integer.parseInt(defaultScore.value());
+
+        Score<Integer> intScore = () -> parsed;
+
+        Assessment assessment1 = new NotStartedAssessment(new DefaultID("1"));
+
+        assessment1 = assessment1.start();
+
+        assessment1 = assessment1.generate_score(
+                new MinScore(
+                        new MaxScore(intScore)
+                )
+        );
+
+        System.out.println(assessment1.score().value());
 
     }
 }

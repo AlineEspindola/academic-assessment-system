@@ -8,5 +8,7 @@ public interface Assessment {
 
     Assessment generate_score(Score score);
 
+    Assessment start();
+
     Score score();
 }
