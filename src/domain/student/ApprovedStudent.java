@@ -19,4 +19,14 @@ public class ApprovedStudent implements Student {
     public void submitAssessment(Assessment assessment) {
         throw new UnsupportedOperationException("Approved students cannot submit assessments.");
     }
+
+    @Override
+    public String name() {
+        return student.name();
+    }
+
+    @Override
+    public int registration() {
+        return student.registration();
+    }
 }

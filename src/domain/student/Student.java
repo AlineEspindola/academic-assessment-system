@@ -7,4 +7,8 @@ public interface Student {
     ID id();
 
     void submitAssessment(Assessment assessment);
+
+    String name();
+
+    int registration();
 }

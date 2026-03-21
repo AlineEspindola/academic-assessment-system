@@ -19,4 +19,14 @@ public class StudyingStudent implements Student {
     public void submitAssessment(Assessment assessment) {
 
     }
+
+    @Override
+    public String name() {
+        return student.name();
+    }
+
+    @Override
+    public int registration() {
+        return student.registration();
+    }
 }
