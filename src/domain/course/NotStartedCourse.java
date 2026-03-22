@@ -1,6 +1,7 @@
 package domain.course;
 
 import domain.primitive.ID;
+import domain.semester.NotStartedSemester;
 import domain.semester.Semester;
 import domain.student.Student;
 import domain.student.StudyingStudent;
@@ -15,11 +16,13 @@ public class NotStartedCourse implements Course {
     private final String name;
     private Teacher teacher;
     private HashMap<ID, Student> students;
+    private Semester semester;
 
-    public NotStartedCourse(ID id, String name) {
+    public NotStartedCourse(ID id, String name, Semester semester) {
         this.id = id;
         this.name = name;
         this.students = new HashMap<>();
+        this.semester = semester;
     }
 
     public NotStartedCourse(ID id, String name, HashMap<ID, Student> students) {

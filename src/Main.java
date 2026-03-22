@@ -4,11 +4,14 @@ import domain.assessment.NotStartedAssessment;
 import domain.course.Course;
 import domain.course.NotStartedCourse;
 import domain.primitive.*;
+import domain.semester.NotStartedSemester;
+import domain.semester.Semester;
 import domain.student.NotStartedStudent;
 import domain.student.Student;
 import domain.teacher.IdleTeacher;
 import domain.teacher.Teacher;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 public class Main {
@@ -18,7 +21,9 @@ public class Main {
 
         Teacher teacher_gabriel = new IdleTeacher(new DefaultID("1"), "Gabriel Rodrigues");
 
-        Course course_mathematics = new NotStartedCourse(new DefaultID("1"), "Matemática");
+        Semester semester = new NotStartedSemester(new DefaultID("1"), LocalDate.of(2026, 3, 22), LocalDate.of(2026, 6, 22));
+
+        Course course_mathematics = new NotStartedCourse(new DefaultID("1"), "Matemática", semester);
 
         course_mathematics.register_teacher(teacher_gabriel);
 

@@ -41,7 +41,9 @@ public class InProgressCourse implements Course {
 
     @Override
     public Course start() {
-        return null;
+        throw new IllegalStateException(
+                "Cannot start a course already in progress."
+        );
     }
 
     @Override
