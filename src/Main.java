@@ -1,29 +1,37 @@
 import domain.assessment.Assessment;
 import domain.assessment.InProgressAssessment;
 import domain.assessment.NotStartedAssessment;
+import domain.course.Course;
+import domain.course.NotStartedCourse;
 import domain.primitive.*;
 import domain.student.NotStartedStudent;
 import domain.student.Student;
+import domain.teacher.IdleTeacher;
+import domain.teacher.Teacher;
+
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        // Testes
-        Score<String> defaultScore = new DefaultScore("11");
-        Integer parsed = Integer.parseInt(defaultScore.value());
+        Student student_ana = new NotStartedStudent(new DefaultID("1"), "Ana Souze Silva", 202601);
+        Student student_felipe = new NotStartedStudent(new DefaultID("2"), "Felipe da Cunha", 202602);
 
-        Score<Integer> intScore = () -> parsed;
+        Teacher teacher_gabriel = new IdleTeacher(new DefaultID("1"), "Gabriel Rodrigues");
 
-        Assessment assessment1 = new NotStartedAssessment(new DefaultID("1"));
+        Course course_mathematics = new NotStartedCourse(new DefaultID("1"), "Matemática");
 
-        assessment1 = assessment1.start();
+        course_mathematics.register_teacher(teacher_gabriel);
 
-        assessment1 = assessment1.generate_score(
-                new MinScore(
-                        new MaxScore(intScore)
-                )
-        );
+        HashMap<ID, Student> students = new HashMap<>();
 
-        System.out.println(assessment1.score().value());
+        students.put(student_ana.id(), student_ana);
+        students.put(student_felipe.id(), student_felipe);
 
+        course_mathematics.register_students(students);
+
+        course_mathematics.start();
+
+        System.out.println(course_mathematics.teacher().status());
+        System.out.println(course_mathematics.student(new DefaultID("1")).status());
     }
 }

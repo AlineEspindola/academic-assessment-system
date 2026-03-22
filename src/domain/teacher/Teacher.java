@@ -9,4 +9,6 @@ public interface Teacher {
     String name();
 
     Assessment evaluate_assessment(Assessment assessment);
+
+    String status();
 }

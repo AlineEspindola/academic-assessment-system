@@ -11,4 +11,6 @@ public interface Student {
     String name();
 
     int registration();
+
+    String status();
 }

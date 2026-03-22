@@ -14,6 +14,10 @@ public interface Course {
 
     void register_students(Map<ID, Student> students);
 
+    Teacher teacher();
+
+    Student student(ID id);
+
     Course start();
 
     Course finish();

@@ -33,4 +33,9 @@ public class NotStartedStudent implements Student {
     public int registration() {
         return registration;
     }
+
+    @Override
+    public String status() {
+        return "This student did not start their course.";
+    }
 }

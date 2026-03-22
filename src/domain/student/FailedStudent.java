@@ -29,4 +29,9 @@ public class FailedStudent implements Student {
     public int registration() {
         return student.registration();
     }
+
+    @Override
+    public String status() {
+        return "This student failed.";
+    }
 }
