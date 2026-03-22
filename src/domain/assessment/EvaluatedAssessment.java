@@ -16,21 +16,27 @@ public class EvaluatedAssessment implements Assessment {
     }
 
     @Override
-    public Assessment generate_score(Score score) {
-        throw new UnsupportedOperationException(
-                "Assessment has already been evaluated. Score cannot be generated again."
-        );
+    public String name() {
+        return assessment.name();
     }
 
     @Override
     public Assessment start() {
-        throw new UnsupportedOperationException(
-                "Assessment has already been completed and cannot be started again."
-        );
+        throw new UnsupportedOperationException("Assessment has already been evaluated and cannot be started again.");
     }
 
     @Override
-    public Score score() {
+    public Assessment generate_score(Score<Double> score) {
+        throw new UnsupportedOperationException("Assessment has already been evaluated. Score cannot be changed.");
+    }
+
+    @Override
+    public Score<Double> score() {
         return assessment.score();
+    }
+
+    @Override
+    public String status() {
+        return "EVALUATED";
     }
 }

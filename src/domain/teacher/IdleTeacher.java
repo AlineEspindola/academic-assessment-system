@@ -2,6 +2,7 @@ package domain.teacher;
 
 import domain.assessment.Assessment;
 import domain.primitive.ID;
+import domain.primitive.Score;
 
 public class IdleTeacher implements Teacher {
     private final ID id;
@@ -23,14 +24,14 @@ public class IdleTeacher implements Teacher {
     }
 
     @Override
-    public Assessment evaluate_assessment(Assessment assessment) {
+    public Assessment evaluateAssessment(Assessment assessment, Score<Double> score) {
         throw new IllegalStateException(
-                "Idle teacher cannot evaluate assessments because they are not currently teaching a course."
+                "Idle teacher cannot evaluate assessments — not currently teaching a course."
         );
     }
 
     @Override
     public String status() {
-        return "This professor is not teaching any course";
+        return "IDLE";
     }
 }

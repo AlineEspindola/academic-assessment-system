@@ -1,6 +1,5 @@
 package domain.student;
 
-import domain.assessment.Assessment;
 import domain.primitive.ID;
 
 public class FailedStudent implements Student {
@@ -11,27 +10,34 @@ public class FailedStudent implements Student {
     }
 
     @Override
-    public ID id() {
-        return student.id();
+    public ID id() { return student.id(); }
+
+    @Override
+    public String name() { return student.name(); }
+
+    @Override
+    public int registration() { return student.registration(); }
+
+    @Override
+    public String status() { return "FAILED"; }
+
+    @Override
+    public Student start() {
+        throw new UnsupportedOperationException("Failed students cannot restart the course.");
     }
 
     @Override
-    public void submitAssessment(Assessment assessment) {
-
+    public Student approve() {
+        throw new UnsupportedOperationException("Failed students cannot be approved.");
     }
 
     @Override
-    public String name() {
-        return student.name();
+    public Student fail() {
+        throw new UnsupportedOperationException("Student has already failed.");
     }
 
     @Override
-    public int registration() {
-        return student.registration();
-    }
-
-    @Override
-    public String status() {
-        return "This student failed.";
+    public Student sendToRecovery() {
+        throw new UnsupportedOperationException("Failed students cannot go to recovery.");
     }
 }

@@ -16,17 +16,27 @@ public class InProgressAssessment implements Assessment {
     }
 
     @Override
-    public Assessment generate_score(Score score) {
-        return new EvaluatedAssessment(new DefaultAssessment(assessment.id(), score));
+    public String name() {
+        return assessment.name();
     }
 
     @Override
     public Assessment start() {
-        throw new IllegalStateException("Assessment already started");
+        throw new IllegalStateException("Assessment is already in progress.");
     }
 
     @Override
-    public Score score() {
+    public Assessment generate_score(Score<Double> score) {
+        return new EvaluatedAssessment(new DefaultAssessment(assessment.id(), assessment.name(), score));
+    }
+
+    @Override
+    public Score<Double> score() {
         return assessment.score();
+    }
+
+    @Override
+    public String status() {
+        return "IN_PROGRESS";
     }
 }

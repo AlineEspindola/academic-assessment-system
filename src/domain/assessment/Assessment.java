@@ -6,9 +6,13 @@ import domain.primitive.Score;
 public interface Assessment {
     ID id();
 
-    Assessment generate_score(Score score);
+    String name();
 
     Assessment start();
 
-    Score score();
+    Assessment generate_score(Score<Double> score);
+
+    Score<Double> score();
+
+    String status();
 }

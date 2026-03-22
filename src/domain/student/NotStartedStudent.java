@@ -1,6 +1,5 @@
 package domain.student;
 
-import domain.assessment.Assessment;
 import domain.primitive.ID;
 
 public class NotStartedStudent implements Student {
@@ -15,27 +14,34 @@ public class NotStartedStudent implements Student {
     }
 
     @Override
-    public ID id() {
-        return id;
+    public ID id() { return id; }
+
+    @Override
+    public String name() { return name; }
+
+    @Override
+    public int registration() { return registration; }
+
+    @Override
+    public String status() { return "NOT_STARTED"; }
+
+    @Override
+    public Student start() {
+        return new StudyingStudent(this);
     }
 
     @Override
-    public void submitAssessment(Assessment assessment) {
-        throw new UnsupportedOperationException("Students who have not started cannot submit assessments.");
+    public Student approve() {
+        throw new IllegalStateException("Student has not started the course yet.");
     }
 
     @Override
-    public String name() {
-        return name;
+    public Student fail() {
+        throw new IllegalStateException("Student has not started the course yet.");
     }
 
     @Override
-    public int registration() {
-        return registration;
-    }
-
-    @Override
-    public String status() {
-        return "This student did not start their course.";
+    public Student sendToRecovery() {
+        throw new IllegalStateException("Student has not started the course yet.");
     }
 }

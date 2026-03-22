@@ -8,10 +8,9 @@ import domain.semester.Semester;
 import domain.student.Student;
 import domain.teacher.Teacher;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class InProgressCourse implements Course {
+public class FinishedCourse implements Course {
     private final ID id;
     private final String name;
     private final Teacher teacher;
@@ -19,7 +18,7 @@ public class InProgressCourse implements Course {
     private final Map<ID, Attendance> attendances;
     private final Semester semester;
 
-    public InProgressCourse(
+    public FinishedCourse(
             ID id,
             String name,
             Teacher teacher,
@@ -66,56 +65,49 @@ public class InProgressCourse implements Course {
 
     @Override
     public Course registerTeacher(Teacher teacher) {
-        throw new IllegalStateException("Cannot change teacher while course is in progress.");
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course registerStudents(Map<ID, Student> newStudents) {
-        throw new IllegalStateException("Cannot register new students while course is in progress.");
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course start() {
-        throw new IllegalStateException("Course is already in progress.");
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course finish() {
-        return new FinishedCourse(id, name, teacher, students, attendances, semester);
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course addAssessment(int bimonthlyOrder, ID studentId, Assessment assessment) {
-        Semester updated = semester.addAssessment(bimonthlyOrder, studentId, assessment);
-        return new InProgressCourse(id, name, teacher, students, attendances, updated);
+        throw new IllegalStateException("Course is already finished — cannot add assessments.");
     }
 
     @Override
     public Course finishFirstBimonthly() {
-        Semester updated = semester.finishFirstBimonthly();
-        return new InProgressCourse(id, name, teacher, students, attendances, updated);
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course finishSecondBimonthly() {
-        Semester updated = semester.finishSecondBimonthly();
-        return new InProgressCourse(id, name, teacher, students, attendances, updated);
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course updateStudentState(ID studentId, Student newState) {
-        Map<ID, Student> updated = new HashMap<>(students);
-        updated.put(studentId, newState);
-        return new InProgressCourse(id, name, teacher, updated, attendances, semester);
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
     public Course updateAttendance(ID studentId, Attendance attendance) {
-        Map<ID, Attendance> updated = new HashMap<>(attendances);
-        updated.put(studentId, attendance);
-        return new InProgressCourse(id, name, teacher, students, updated, semester);
+        throw new IllegalStateException("Course is already finished.");
     }
 
     @Override
-    public String status() { return "IN_PROGRESS"; }
+    public String status() { return "FINISHED"; }
 }

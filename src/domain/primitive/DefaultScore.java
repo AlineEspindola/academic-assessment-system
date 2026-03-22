@@ -1,15 +1,14 @@
 package domain.primitive;
 
-// Criar novos tipos realmente validados
-public class DefaultScore implements Score<String> {
-    private final String value;
+public class DefaultScore implements Score<Double> {
+    private final Double value;
 
-    public DefaultScore(String value) {
+    public DefaultScore(Double value) {
         this.value = value;
     }
 
     @Override
-    public String value() {
+    public Double value() {
         return value;
     }
 }

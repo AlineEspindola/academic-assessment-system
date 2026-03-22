@@ -6,11 +6,17 @@ import domain.primitive.ID;
 public interface Student {
     ID id();
 
-    void submitAssessment(Assessment assessment);
-
     String name();
 
     int registration();
 
     String status();
+
+    Student start();
+
+    Student approve();
+
+    Student fail();
+
+    Student sendToRecovery();
 }

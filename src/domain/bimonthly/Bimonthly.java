@@ -1,17 +1,25 @@
 package domain.bimonthly;
 
+import domain.assessment.Assessment;
 import domain.primitive.ID;
 import domain.primitive.Score;
-import domain.studentAssessmentRecord.StudentAssessmentRecord;
 
-import java.util.Map;
+import java.util.List;
 
 public interface Bimonthly {
-    void add_student_assessment_records(Map<ID, StudentAssessmentRecord> student_assessment_records);
+    ID id();
+
+    int order();
 
     Bimonthly start();
 
+    Bimonthly addAssessment(ID studentId, Assessment assessment);
+
     Bimonthly finish();
 
-    Score final_average(ID student_id);
+    Score<Double> averageFor(ID studentId);
+
+    List<Assessment> assessmentsFor(ID studentId);
+
+    String status();
 }

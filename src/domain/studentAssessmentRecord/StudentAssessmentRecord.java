@@ -6,9 +6,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public interface StudentAssessmentRecord {
-    ID student_id();
+    ID studentId();
 
-    ID assessment_id();
+    ID assessmentId();
 
     LocalDate date();
 

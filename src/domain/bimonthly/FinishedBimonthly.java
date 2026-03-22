@@ -6,28 +6,18 @@ import domain.primitive.ID;
 import domain.primitive.Score;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InProgressBimonthly implements Bimonthly {
+public class FinishedBimonthly implements Bimonthly {
     private final ID id;
     private final int order;
     private final LocalDate startDate;
     private final LocalDate endDate;
     private final Map<String, List<Assessment>> assessmentsByStudent;
 
-    public InProgressBimonthly(ID id, int order, LocalDate startDate, LocalDate endDate) {
-        this.id = id;
-        this.order = order;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.assessmentsByStudent = new HashMap<>();
-    }
-
-    private InProgressBimonthly(
+    public FinishedBimonthly(
             ID id, int order,
             LocalDate startDate, LocalDate endDate,
             Map<String, List<Assessment>> assessmentsByStudent
@@ -47,19 +37,17 @@ public class InProgressBimonthly implements Bimonthly {
 
     @Override
     public Bimonthly start() {
-        throw new IllegalStateException("Bimonthly #" + order + " is already in progress.");
+        throw new IllegalStateException("Bimonthly #" + order + " has already finished.");
     }
 
     @Override
     public Bimonthly addAssessment(ID studentId, Assessment assessment) {
-        Map<String, List<Assessment>> updated = deepCopy();
-        updated.computeIfAbsent(studentId.value(), k -> new ArrayList<>()).add(assessment);
-        return new InProgressBimonthly(id, order, startDate, endDate, updated);
+        throw new IllegalStateException("Bimonthly #" + order + " has already finished — cannot add assessments.");
     }
 
     @Override
     public Bimonthly finish() {
-        return new FinishedBimonthly(id, order, startDate, endDate, assessmentsByStudent);
+        throw new IllegalStateException("Bimonthly #" + order + " has already finished.");
     }
 
     @Override
@@ -78,13 +66,5 @@ public class InProgressBimonthly implements Bimonthly {
     }
 
     @Override
-    public String status() { return "IN_PROGRESS"; }
-
-    private Map<String, List<Assessment>> deepCopy() {
-        Map<String, List<Assessment>> copy = new HashMap<>();
-        for (Map.Entry<String, List<Assessment>> entry : assessmentsByStudent.entrySet()) {
-            copy.put(entry.getKey(), new ArrayList<>(entry.getValue()));
-        }
-        return copy;
-    }
+    public String status() { return "FINISHED"; }
 }

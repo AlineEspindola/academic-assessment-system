@@ -2,10 +2,10 @@ package domain.student;
 
 import domain.primitive.ID;
 
-public class ApprovedStudent implements Student {
+public class RecoveryStudent implements Student {
     private final Student student;
 
-    public ApprovedStudent(Student student) {
+    public RecoveryStudent(Student student) {
         this.student = student;
     }
 
@@ -19,25 +19,25 @@ public class ApprovedStudent implements Student {
     public int registration() { return student.registration(); }
 
     @Override
-    public String status() { return "APPROVED"; }
+    public String status() { return "IN_RECOVERY"; }
 
     @Override
     public Student start() {
-        throw new UnsupportedOperationException("Approved students cannot restart the course.");
+        throw new IllegalStateException("Student is already in recovery.");
     }
 
     @Override
     public Student approve() {
-        throw new UnsupportedOperationException("Student is already approved.");
+        return new ApprovedStudent(student);
     }
 
     @Override
     public Student fail() {
-        throw new UnsupportedOperationException("Approved students cannot be failed.");
+        return new FailedStudent(student);
     }
 
     @Override
     public Student sendToRecovery() {
-        throw new UnsupportedOperationException("Approved students do not need recovery.");
+        throw new IllegalStateException("Student is already in recovery.");
     }
 }

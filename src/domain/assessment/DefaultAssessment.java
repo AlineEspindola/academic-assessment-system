@@ -2,21 +2,23 @@ package domain.assessment;
 
 import domain.primitive.DefaultScore;
 import domain.primitive.ID;
-import domain.primitive.IntScore;
 import domain.primitive.Score;
 
 public class DefaultAssessment implements Assessment {
     private final ID id;
-    private final Score score;
+    private final String name;
+    private final Score<Double> score;
 
-    public DefaultAssessment(ID id, Score score) {
+    public DefaultAssessment(ID id, String name, Score<Double> score) {
         this.id = id;
+        this.name = name;
         this.score = score;
     }
 
-    public DefaultAssessment(ID id) {
+    public DefaultAssessment(ID id, String name) {
         this.id = id;
-        this.score = new IntScore(new DefaultScore("0"));
+        this.name = name;
+        this.score = new DefaultScore(0.0);
     }
 
     @Override
@@ -25,10 +27,8 @@ public class DefaultAssessment implements Assessment {
     }
 
     @Override
-    public Assessment generate_score(Score score) {
-        throw new UnsupportedOperationException(
-                "DefaultAssessment cannot be modified. Score generation is not allowed for this assessment type."
-        );
+    public String name() {
+        return name;
     }
 
     @Override
@@ -37,7 +37,19 @@ public class DefaultAssessment implements Assessment {
     }
 
     @Override
-    public Score score() {
+    public Assessment generate_score(Score<Double> score) {
+        throw new UnsupportedOperationException(
+                "DefaultAssessment cannot be modified. Use start() first."
+        );
+    }
+
+    @Override
+    public Score<Double> score() {
         return score;
+    }
+
+    @Override
+    public String status() {
+        return "NOT_STARTED";
     }
 }

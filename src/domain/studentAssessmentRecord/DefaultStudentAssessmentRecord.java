@@ -6,26 +6,26 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class DefaultStudentAssessmentRecord implements StudentAssessmentRecord {
+    private final ID studentId;
+    private final ID assessmentId;
     private final LocalDate date;
     private final LocalTime time;
-    private final ID student_id;
-    private final ID assessment_id;
 
-    public DefaultStudentAssessmentRecord(LocalDate date, LocalTime time, ID student_id, ID assessment_id) {
+    public DefaultStudentAssessmentRecord(ID studentId, ID assessmentId, LocalDate date, LocalTime time) {
+        this.studentId = studentId;
+        this.assessmentId = assessmentId;
         this.date = date;
         this.time = time;
-        this.student_id = student_id;
-        this.assessment_id = assessment_id;
     }
 
     @Override
-    public ID student_id() {
-        return student_id;
+    public ID studentId() {
+        return studentId;
     }
 
     @Override
-    public ID assessment_id() {
-        return assessment_id;
+    public ID assessmentId() {
+        return assessmentId;
     }
 
     @Override

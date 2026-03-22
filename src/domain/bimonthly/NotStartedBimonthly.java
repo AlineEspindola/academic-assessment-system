@@ -1,42 +1,60 @@
 package domain.bimonthly;
 
+import domain.assessment.Assessment;
+import domain.primitive.DefaultScore;
 import domain.primitive.ID;
 import domain.primitive.Score;
-import domain.studentAssessmentRecord.StudentAssessmentRecord;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Map;
+import java.util.List;
 
 public class NotStartedBimonthly implements Bimonthly {
     private final ID id;
-    private final LocalDate start_date;
-    private final LocalDate end_date;
-    private Map<ID, StudentAssessmentRecord> student_assessment_records;
+    private final int order;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
-    public NotStartedBimonthly(ID id, LocalDate start_date, LocalDate end_date) {
+    public NotStartedBimonthly(ID id, int order, LocalDate startDate, LocalDate endDate) {
+        if (order != 1 && order != 2) {
+            throw new IllegalArgumentException("Bimonthly order must be 1 or 2.");
+        }
         this.id = id;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.order = order;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     @Override
-    public void add_student_assessment_records(Map<ID, StudentAssessmentRecord> student_assessment_records) {
-//        this.student_assessment_records.putAll(student_assessment_records);
-    }
+    public ID id() { return id; }
+
+    @Override
+    public int order() { return order; }
 
     @Override
     public Bimonthly start() {
-        return null;
+        return new InProgressBimonthly(id, order, startDate, endDate);
+    }
+
+    @Override
+    public Bimonthly addAssessment(ID studentId, Assessment assessment) {
+        throw new IllegalStateException("Bimonthly #" + order + " has not started yet.");
     }
 
     @Override
     public Bimonthly finish() {
-        return null;
+        throw new IllegalStateException("Bimonthly #" + order + " has not started yet.");
     }
 
     @Override
-    public Score final_average(ID student_id) {
-        return null;
+    public Score<Double> averageFor(ID studentId) {
+        throw new IllegalStateException("Bimonthly #" + order + " has not started yet — no scores available.");
     }
+
+    @Override
+    public List<Assessment> assessmentsFor(ID studentId) {
+        throw new IllegalStateException("Bimonthly #" + order + " has not started yet.");
+    }
+
+    @Override
+    public String status() { return "NOT_STARTED"; }
 }

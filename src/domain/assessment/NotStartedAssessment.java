@@ -2,35 +2,42 @@ package domain.assessment;
 
 import domain.primitive.DefaultScore;
 import domain.primitive.ID;
-import domain.primitive.IntScore;
 import domain.primitive.Score;
 
 public class NotStartedAssessment implements Assessment {
-    private final ID id;
-    private final Score score;
+    private final Assessment assessment;
 
-    public NotStartedAssessment(ID id) {
-        this.id = id;
-        this.score = new IntScore(new DefaultScore("0"));
+    public NotStartedAssessment(ID id, String name) {
+        this.assessment = new DefaultAssessment(id, name);
     }
 
     @Override
     public ID id() {
-        return id;
+        return assessment.id();
     }
 
     @Override
-    public Assessment generate_score(Score score) {
-        throw new IllegalStateException("Cannot generate score: assessment not started");
+    public String name() {
+        return assessment.name();
     }
 
     @Override
     public Assessment start() {
-        return new InProgressAssessment(this);
+        return new InProgressAssessment(assessment);
     }
 
     @Override
-    public Score score() {
-        return score;
+    public Assessment generate_score(Score<Double> score) {
+        throw new IllegalStateException("Cannot generate score: assessment not started yet.");
+    }
+
+    @Override
+    public Score<Double> score() {
+        return assessment.score();
+    }
+
+    @Override
+    public String status() {
+        return "NOT_STARTED";
     }
 }

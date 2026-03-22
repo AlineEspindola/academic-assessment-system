@@ -2,6 +2,7 @@ package domain.teacher;
 
 import domain.assessment.Assessment;
 import domain.primitive.ID;
+import domain.primitive.Score;
 
 public class TeachingTeacher implements Teacher {
     private final Teacher teacher;
@@ -21,12 +22,13 @@ public class TeachingTeacher implements Teacher {
     }
 
     @Override
-    public Assessment evaluate_assessment(Assessment assessment) {
-        return null;
+    public Assessment evaluateAssessment(Assessment assessment, Score<Double> score) {
+        Assessment inProgress = assessment.start();
+        return inProgress.generate_score(score);
     }
 
     @Override
     public String status() {
-        return "This teacher is teaching a course";
+        return "TEACHING";
     }
 }

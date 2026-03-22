@@ -1,24 +1,30 @@
 package domain.semester;
 
+import domain.assessment.Assessment;
+import domain.bimonthly.Bimonthly;
 import domain.primitive.ID;
 import domain.primitive.Score;
-
-import java.time.LocalDate;
 
 public interface Semester {
     ID id();
 
-    void start();
+    Bimonthly firstBimonthly();
 
-    void finish();
+    Bimonthly secondBimonthly();
 
-    void finish_first_bimonthly();
+    Semester start();
 
-    void finish_last_bimonthly();
+    Semester finishFirstBimonthly();
 
-    LocalDate start_date();
+    Semester finishSecondBimonthly();
 
-    LocalDate end_date();
+    Semester finish();
 
-    Score final_average();
+    Semester addAssessment(int bimonthlyOrder, ID studentId, Assessment assessment);
+
+    Score<Double> semesterAverage(ID studentId);
+
+    boolean studentEligibleForRecovery(ID studentId);
+
+    String status();
 }

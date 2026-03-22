@@ -1,6 +1,5 @@
 package domain.student;
 
-import domain.assessment.Assessment;
 import domain.primitive.ID;
 
 public class StudyingStudent implements Student {
@@ -11,27 +10,34 @@ public class StudyingStudent implements Student {
     }
 
     @Override
-    public ID id() {
-        return student.id();
+    public ID id() { return student.id(); }
+
+    @Override
+    public String name() { return student.name(); }
+
+    @Override
+    public int registration() { return student.registration(); }
+
+    @Override
+    public String status() { return "STUDYING"; }
+
+    @Override
+    public Student start() {
+        throw new IllegalStateException("Student is already studying.");
     }
 
     @Override
-    public void submitAssessment(Assessment assessment) {
-
+    public Student approve() {
+        return new ApprovedStudent(student);
     }
 
     @Override
-    public String name() {
-        return student.name();
+    public Student fail() {
+        return new FailedStudent(student);
     }
 
     @Override
-    public int registration() {
-        return student.registration();
-    }
-
-    @Override
-    public String status() {
-        return "This student is studying.";
+    public Student sendToRecovery() {
+        return new RecoveryStudent(student);
     }
 }
