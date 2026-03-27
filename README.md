@@ -381,7 +381,7 @@ A v1.0 é funcional mas tem desvios em relação ao estilo da desenvolvedora que
 - Onde validações estão no lugar errado (muito cedo, muito tarde, duplicadas)
 - Como `StudentAssessmentRecord` — que existe mas não está integrado — deveria se encaixar no fluxo
 
-Um objetivo explícito da v1.2 é medir quanto tempo é gasto em correções e ajustes do output da IA versus quanto seria gasto escrevendo do zero, dado o nível de especificidade do prompt atual. Esse número é relevante para decidir quanto esforço vale a pena investir em prompts mais sofisticados versus construir uma base melhor de contexto para agentes especializados.
+Um objetivo explícito da v1.1 é medir quanto tempo é gasto em correções e ajustes do output da IA versus quanto seria gasto escrevendo do zero, dado o nível de especificidade do prompt atual. Esse número é relevante para decidir quanto esforço vale a pena investir em prompts mais sofisticados versus construir uma base melhor de contexto para agentes especializados.
 
 A hipótese é que prompts mais curtos com agentes mais especializados produzirão resultados mais alinhados com o estilo da desenvolvedora do que um prompt único longo — e que o tempo de revisão cairá proporcionalmente.
 
