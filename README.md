@@ -371,15 +371,14 @@ O teste mais direto para qualquer decisão de design é: se alguém que entende 
 
 ---
 
-## O que vem a seguir — v1.2
+## O que vem a seguir — v1.1
 
-A v1.0 é funcional mas tem desvios em relação ao estilo da desenvolvedora que merecem correção antes de evoluir o sistema. A v1.2 será uma análise linha a linha do código gerado, identificando:
+A v1.0 é funcional mas tem desvios em relação ao estilo da desenvolvedora que merecem correção antes de evoluir o sistema. A v1.1 será uma análise linha a linha do código gerado, identificando:
 
 - Onde a IA tomou decisões convencionais que não são as preferidas
 - Onde a imutabilidade poderia ser mais ou menos rigorosa
 - Onde a nomenclatura saiu do vocabulário de domínio
 - Onde validações estão no lugar errado (muito cedo, muito tarde, duplicadas)
-- Como `StudentAssessmentRecord` — que existe mas não está integrado — deveria se encaixar no fluxo
 
 Um objetivo explícito da v1.1 é medir quanto tempo é gasto em correções e ajustes do output da IA versus quanto seria gasto escrevendo do zero, dado o nível de especificidade do prompt atual. Esse número é relevante para decidir quanto esforço vale a pena investir em prompts mais sofisticados versus construir uma base melhor de contexto para agentes especializados.
 
