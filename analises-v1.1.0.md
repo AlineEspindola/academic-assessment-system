@@ -189,7 +189,7 @@ A regra é simples: o nome do método deve responder à pergunta "frequência de
 Teacher teacher = new IdleTeacher(TEACHER_ID, "Prof. Marcos Henrique");
 ```
 
-![code comments be like — [Open box before eating pizza.]](comentario_pizza.png)
+![Meme de comentário](https://github.com/user-attachments/assets/b448d08e-90d9-41c6-8d7c-ed03ee4fb59c)
 
 O comentário `// Professor` antes de uma linha que já diz `Teacher teacher = new IdleTeacher(...)` é exatamente isso: instrução para abrir a caixa antes de comer a pizza. O código já é o comentário. Repeti-lo em texto é ruído.
 
@@ -289,7 +289,7 @@ O construtor tem um objetivo: **construir o objeto**. Ponto. Colocar verificaç�
 
 A analogia mais direta:
 
-![duas garrafas — uma limpa, uma com algo suspeito dentro](garrafas.png)
+![garrafas](https://github.com/user-attachments/assets/7cc45e1f-527e-4f00-9fed-bd43eaf480be)
 
 Antes de analisar qualquer coisa, as duas são garrafas. Foram construídas como garrafas — esse é o trabalho do construtor. O momento de verificar o conteúdo é quando você vai usar, não quando o objeto foi criado.
 
