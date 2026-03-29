@@ -1,5 +1,9 @@
 # Sistema Acadêmico de Avaliações
 
+<img width="484" height="400" alt="image" src="https://github.com/user-attachments/assets/1dc4c4cd-704c-4888-bfcf-687214235f95" />
+
+<img width="484" height="400" alt="image" src="https://github.com/user-attachments/assets/dec9abd0-136d-4102-bc43-2726bd30e096" />
+
 > Sistema de avaliação acadêmica semestral — projeto de estudo em design patterns orientados a objetos e benchmark de modelos de IA.
 
 **Autora:** Aline de Abreu Espindola
