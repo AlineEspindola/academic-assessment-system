@@ -66,8 +66,8 @@ public class CourseView implements View {
 
             case "NOT_STARTED" -> {
                 Printer.menu("Iniciar o curso");
-                int op = input.readMenuOption(1);
-                if (op == 1) startCourse();
+                int option = input.readMenuOption(1);
+                if (option == 1) startCourse();
             }
 
             case "IN_PROGRESS" -> {
@@ -81,8 +81,8 @@ public class CourseView implements View {
                             "Ver situação dos alunos",
                             "Sair"
                     );
-                    int op = input.readMenuOption(5);
-                    switch (op) {
+                    int option = input.readMenuOption(5);
+                    switch (option) {
                         case 1 -> launchAssessment(1);
                         case 2 -> registerAttendance();
                         case 3 -> finishFirstBimonthly();
@@ -98,8 +98,8 @@ public class CourseView implements View {
                             "Ver situação dos alunos",
                             "Sair"
                     );
-                    int op = input.readMenuOption(5);
-                    switch (op) {
+                    int option = input.readMenuOption(5);
+                    switch (option) {
                         case 1 -> launchAssessment(2);
                         case 2 -> registerAttendance();
                         case 3 -> finishSecondBimonthly();
@@ -115,8 +115,8 @@ public class CourseView implements View {
                         "Lançar nota de recuperação",
                         "Sair"
                 );
-                int op = input.readMenuOption(3);
-                switch (op) {
+                int option = input.readMenuOption(3);
+                switch (option) {
                     case 1 -> showFinalResults();
                     case 2 -> launchRecovery();
                     case 3 -> { return false; }

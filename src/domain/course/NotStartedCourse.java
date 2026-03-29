@@ -39,9 +39,9 @@ public class NotStartedCourse implements Course {
 
     @Override
     public Student student(ID studentId) {
-        Student s = students.get(studentId);
-        if (s == null) throw new IllegalArgumentException("Student " + studentId.value() + " not found in this course.");
-        return s;
+        Student studentFound = students.get(studentId);
+        if (studentFound == null) throw new IllegalArgumentException("Student " + studentId.value() + " not found in this course.");
+        return studentFound;
     }
 
     @Override

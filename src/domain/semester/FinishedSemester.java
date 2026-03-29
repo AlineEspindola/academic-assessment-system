@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class FinishedSemester implements Semester {
     private static final double DIRECT_APPROVAL_MIN = 6.0;
     private static final double RECOVERY_ELIGIBLE_MIN = 4.0;
-    private static final double RECOVERY_ELIGIBLE_MAX = 6.0; // exclusive
+    private static final double RECOVERY_ELIGIBLE_MAX = 6.0;
 
     private final ID id;
     private final LocalDate startDate;
@@ -81,8 +81,8 @@ public class FinishedSemester implements Semester {
      */
     @Override
     public boolean studentEligibleForRecovery(ID studentId) {
-        double m = semesterAverage(studentId).value();
-        return m >= RECOVERY_ELIGIBLE_MIN && m < RECOVERY_ELIGIBLE_MAX;
+        double averageStudent = semesterAverage(studentId).value();
+        return averageStudent >= RECOVERY_ELIGIBLE_MIN && averageStudent < RECOVERY_ELIGIBLE_MAX;
     }
 
     /**

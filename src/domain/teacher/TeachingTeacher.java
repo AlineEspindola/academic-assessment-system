@@ -23,8 +23,8 @@ public class TeachingTeacher implements Teacher {
 
     @Override
     public Assessment evaluateAssessment(Assessment assessment, Score<Double> score) {
-        Assessment inProgress = assessment.start();
-        return inProgress.generate_score(score);
+        Assessment assessmentInProgress = assessment.start();
+        return assessmentInProgress.generate_score(score);
     }
 
     @Override
