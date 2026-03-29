@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CourseView {
+public class CourseView implements View {
 
     private Course course;
     private final InputReader input;
@@ -31,11 +31,9 @@ public class CourseView {
         this.course = DataMock.buildCourse();
     }
 
-    // ── Entry point ──────────────────────────────────────────────────────────
-
     public void run() {
         Printer.header("SISTEMA DE AVALIAÇÃO ACADÊMICA  v1.0");
-        showCourseInfo();
+        showInfo();
 
         boolean running = true;
         while (running) {
@@ -46,9 +44,7 @@ public class CourseView {
         Printer.header("Sistema encerrado. Até logo!");
     }
 
-    // ── Informações iniciais ─────────────────────────────────────────────────
-
-    private void showCourseInfo() {
+    public void showInfo() {
         Printer.section("Dados do Curso (Mockados)");
         Printer.info("Curso", course.name());
         Printer.info("Professor", course.teacher().name());
@@ -61,9 +57,7 @@ public class CourseView {
         }
     }
 
-    // ── Menu principal ───────────────────────────────────────────────────────
-
-    private boolean showMainMenu() {
+    public boolean showMainMenu() {
         Printer.section("MENU PRINCIPAL  [Status: " + course.status() + "]");
 
         String statusCurso = course.status();
@@ -138,7 +132,7 @@ public class CourseView {
         return true;
     }
 
-    // ── Ações ────────────────────────────────────────────────────────────────
+    // ── Ações Privadas do Curso ────────────────────────────────────────────────────────────────
 
     private void startCourse() {
         try {
